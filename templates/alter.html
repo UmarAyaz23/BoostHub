@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ALTER TABLES</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ALTER TABLES</h1>
+        </header>
+        <main>
+            <div class="dropdown">
+                <label for="table-select">Choose A Table:</label>
+                <select id="table-select">
+                    <option value="Services">Services</option>
+                    <option value="Sellers">Sellers</option>
+                    <option value="Customers">Customers</option>
+                    <option value="Orders">Orders</option>
+                    <option value="CompositeKeyTable">CompositeKeyTable</option>
+                </select>
+            </div>
+            <div id="table-container"></div>
+            <div class="dropdown">
+                <label for="operation-select">Choose An Operation:</label>
+                <select id="operation-select">
+                    <option value="none">None</option>
+                    <option value="insert">Insert</option>
+                    <option value="update">Update</option>
+                    <option value="delete">Delete</option>
+                </select>
+            </div>
+            <div id="operation-container"></div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

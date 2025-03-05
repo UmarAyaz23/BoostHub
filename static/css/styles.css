@@ -1,0 +1,173 @@
+/* static/css/styles.css */
+body {
+    font-family: 'Century Gothic', sans-serif;
+    background: url('../img/Background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/*rgba(30, 45, 66, 0.8)*/
+/*rgba(252, 224, 221)*/
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(30, 45, 66, 0.7); /* Added transparency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 0.2em;
+}
+
+header h2 {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 1.5em;
+    color:  white;
+}
+
+main {
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: rgba(252, 224, 221, 0.7);
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: rgba(252, 224, 221, 0.7);
+}
+
+footer {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+footer p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer li {
+    font-size: 1em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(252, 224, 221, 0.7);
+    color: white;
+}
+
+.dropdown {
+    margin: 20px 0;
+}
+
+label {
+    font-weight: normal;
+}
+
+select {
+    padding: 10px;
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+/* ... existing styles ... */
+
+table tr:hover {
+    background-color: rgba(252, 224, 221, 0.2); /* Light gray background on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: white;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+form button[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: rgba(252, 224, 221, 0.7);
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+form button[type="submit"]:hover {
+    background-color: rgba(252, 224, 221, 0.9);
+}

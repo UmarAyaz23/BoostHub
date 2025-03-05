@@ -1,0 +1,265 @@
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Services CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        IF SQLCODE != -942 THEN -- ORA-00942: table or view does not exist
+            RAISE;
+        END IF;
+END;
+/
+
+-- Create the Services table
+CREATE TABLE Services (
+    Ser_ID INT PRIMARY KEY NOT NULL,  -- Candidate Key
+    GameName VARCHAR2(100),
+    AccountLevel INT,
+    Price DECIMAL(10, 2),
+    Description VARCHAR2(200), -- Adjust the size according to your needs
+    Status VARCHAR2(20)
+);
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (201, 'World of Warcraft', 80, 50.00, 'Power leveling service for WoW', 'Active');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (202, 'League of Legends', 30, 35.00, 'Boosting service for LoL', 'Inactive');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (203, 'Fortnite', 50, 40.00, 'Account leveling for Fortnite', 'Active');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (204, 'Dota 2', 25, 30.00, 'Boosting service for Dota 2', 'Inactive');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (205, 'Call of Duty', 45, 60.00, 'Leveling service for CoD', 'Active');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (206, 'Overwatch', 35, 45.00, 'Boosting service for Overwatch', 'Inactive');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (207, 'Apex Legends', 60, 55.00, 'Account leveling for Apex Legends', 'Active');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (208, 'Valorant', 40, 50.00, 'Boosting service for Valorant', 'Inactive');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (209, 'PUBG', 70, 65.00, 'Leveling service for PUBG', 'Active');
+
+INSERT INTO Services (Ser_ID, GameName, AccountLevel, Price, Description, Status)
+VALUES (210, 'Minecraft', 20, 20.00, 'Account leveling for Minecraft', 'Inactive');
+
+SELECT * FROM Services;
+
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Sellers CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        IF SQLCODE != -942 THEN -- ORA-00942: table or view does not exist
+            RAISE;
+        END IF;
+END;
+/
+
+CREATE TABLE Sellers (
+    S_ID INT PRIMARY KEY,  -- Candidate Key
+    Ser_ID INT,
+    S_Username VARCHAR2(50) NOT NULL,
+    S_Password VARCHAR2(50) NOT NULL,
+    S_Email VARCHAR2(100) NOT NULL,
+    S_Reg_Date DATE,
+    S_Rating DECIMAL(2, 1),
+    S_Payment_Info VARCHAR2(100)
+);
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (1, 201, 'provider1', 'password1', 'provider1@example.com', DATE '2024-05-25', 4.5, 'Payment details for provider1');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (2, 202, 'provider2', 'password2', 'provider2@example.com', DATE '2024-05-26', 4.2, 'Payment details for provider2');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (3, 203, 'provider3', 'password3', 'provider3@example.com', DATE '2024-05-27', 4.0, 'Payment details for provider3');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (4, 204, 'provider4', 'password4', 'provider4@example.com', DATE '2024-05-28', 3.8, 'Payment details for provider4');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (5, 205, 'provider5', 'password5', 'provider5@example.com', DATE '2024-05-29', 4.3, 'Payment details for provider5');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (6, 206, 'provider6', 'password6', 'provider6@example.com', DATE '2024-05-30', 4.4, 'Payment details for provider6');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (7, 207, 'provider7', 'password7', 'provider7@example.com', DATE '2024-05-31', 4.1, 'Payment details for provider7');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (8, 208, 'provider8', 'password8', 'provider8@example.com', DATE '2024-06-01', 4.0, 'Payment details for provider8');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (9, 209, 'provider9', 'password9', 'provider9@example.com', DATE '2024-06-02', 3.9, 'Payment details for provider9');
+
+INSERT INTO Sellers (S_ID, Ser_ID, S_Username, S_Password, S_Email, S_Reg_Date, S_Rating, S_Payment_Info)
+VALUES (10, 210, 'provider10', 'password10', 'provider10@example.com', DATE '2024-06-03', 3.7, 'Payment details for provider10');
+
+SELECT * FROM Sellers;
+
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Customers CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        IF SQLCODE != -942 THEN -- ORA-00942: table or view does not exist
+            RAISE;
+        END IF;
+END;
+/
+
+
+CREATE TABLE Customers (
+    C_ID INT PRIMARY KEY,  -- Candidate Key
+    C_Username VARCHAR2(50) NOT NULL,
+    C_Password VARCHAR2(50) NOT NULL,
+    C_Email VARCHAR2(100) NOT NULL,
+    C_Reg_Date DATE,
+    C_Rating DECIMAL(2, 1),
+    C_Payment_Method VARCHAR2(50),
+    C_Balance DECIMAL(10, 2)
+);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (101, 'customer1', 'password1', 'customer1@example.com', DATE '2024-05-25', 4.1, 'Credit Card', 100.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (102, 'customer2', 'password2', 'customer2@example.com', DATE '2024-05-26', 4.0, 'PayPal', 200.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (103, 'customer3', 'password3', 'customer3@example.com', DATE '2024-05-27', 3.9, 'Credit Card', 150.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (104, 'customer4', 'password4', 'customer4@example.com', DATE '2024-05-28', 3.8, 'PayPal', 180.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (105, 'customer5', 'password5', 'customer5@example.com', DATE '2024-05-29', 4.2, 'Credit Card', 130.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (106, 'customer6', 'password6', 'customer6@example.com', DATE '2024-05-30', 4.3, 'PayPal', 120.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (107, 'customer7', 'password7', 'customer7@example.com', DATE '2024-05-31', 4.4, 'Credit Card', 160.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (108, 'customer8', 'password8', 'customer8@example.com', DATE '2024-06-01', 4.1, 'PayPal', 110.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (109, 'customer9', 'password9', 'customer9@example.com', DATE '2024-06-02', 4.2, 'Credit Card', 170.00);
+
+INSERT INTO Customers (C_ID, C_Username, C_Password, C_Email, C_Reg_Date, C_Rating, C_Payment_Method, C_Balance)
+VALUES (110, 'customer10', 'password10', 'customer10@example.com', DATE '2024-06-03', 4.3, 'PayPal', 140.00);
+
+SELECT * FROM Customers;
+
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Orders CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        IF SQLCODE != -942 THEN -- ORA-00942: table or view does not exist
+            RAISE;
+        END IF;
+END;
+/
+ 
+CREATE TABLE Orders (
+    O_ID INT PRIMARY KEY NOT NULL,  -- Candidate Key
+    O_Date DATE,
+    O_Status VARCHAR2(20),
+    O_Price DECIMAL(10, 2),
+    O_PaymentMethod VARCHAR2(50),
+    O_ETA DATE,
+    O_Rating DECIMAL(2, 1)
+);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (1, DATE '2024-05-25', 'Pending', 100.00, 'Credit Card', DATE '2024-05-28', NULL);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (2, DATE '2024-05-26', 'Delivered', 75.00, 'PayPal', DATE '2024-05-29', 4.5);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (3, DATE '2024-05-27', 'Pending', 60.00, 'Credit Card', DATE '2024-05-30', NULL);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (4, DATE '2024-05-28', 'Delivered', 80.00, 'PayPal', DATE '2024-05-31', 4.0);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (5, DATE '2024-05-29', 'Pending', 90.00, 'Credit Card', DATE '2024-06-01', NULL);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (6, DATE '2024-05-30', 'Delivered', 85.00, 'PayPal', DATE '2024-06-02', 4.2);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (7, DATE '2024-05-31', 'Pending', 95.00, 'Credit Card', DATE '2024-06-03', NULL);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (8, DATE '2024-06-01', 'Delivered', 70.00, 'PayPal', DATE '2024-06-04', 4.3);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (9, DATE '2024-06-02', 'Pending', 65.00, 'Credit Card', DATE '2024-06-05', NULL);
+
+INSERT INTO Orders (O_ID, O_Date, O_Status, O_Price, O_PaymentMethod, O_ETA, O_Rating)
+VALUES (10, DATE '2024-06-03', 'Delivered', 55.00, 'PayPal', DATE '2024-06-06', 4.4);
+
+SELECT * FROM Orders;
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE CompositeKeyTable CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        IF SQLCODE != -942 THEN -- ORA-00942: table or view does not exist
+            RAISE;
+        END IF;
+END;
+/
+
+CREATE TABLE CompositeKeyTable (
+    O_ID INT PRIMARY KEY NOT NULL,
+    S_ID INT,
+    C_ID INT,
+    Ser_ID INT,
+    FOREIGN KEY (S_ID) REFERENCES Sellers(S_ID),
+    FOREIGN KEY (C_ID) REFERENCES Customers(C_ID),
+    FOREIGN KEY (Ser_ID) REFERENCES Services(Ser_ID)
+);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (1, 1, 101, 201);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (2, 2, 102, 202);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (3, 3, 103, 203);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (4, 4, 104, 204);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (5, 5, 105, 205);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (6, 6, 106, 206);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (7, 7, 107, 207);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (8, 8, 108, 208);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (9, 9, 109, 209);
+
+INSERT INTO CompositeKeyTable (O_ID, S_ID, C_ID, Ser_ID)
+VALUES (10, 10, 110, 210);
+
+SELECT * FROM CompositeKeyTable;
